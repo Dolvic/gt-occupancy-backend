@@ -20,4 +20,6 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
 
     compile("org.postgresql:postgresql:42.1.1")
+    compile("org.liquibase:liquibase-core:3.5.3")
+    compile("com.zaxxer:HikariCP:2.6.1")
 }
