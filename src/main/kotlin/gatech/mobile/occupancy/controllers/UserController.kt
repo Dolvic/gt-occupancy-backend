@@ -2,7 +2,6 @@ package gatech.mobile.occupancy.controllers
 
 import gatech.mobile.occupancy.entities.User
 import gatech.mobile.occupancy.repositories.UserRepository
-import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -24,12 +23,6 @@ class UserController(val userRepository: UserRepository)
     @PostMapping(consumes = arrayOf(MediaType.APPLICATION_JSON_VALUE))
     fun registerUser(@RequestBody user: User, uriBuilder: UriComponentsBuilder): ResponseEntity<String>
     {
-        val userExists = userRepository.findByUsername(user.username) != null
-        if (userExists)
-        {
-            return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body("""{"error":"User '${user.username}' already exists"}""")
-        }
         userRepository.save(user)
         val location = uriBuilder.pathSegment("users", user.username).build().toUri()
         return ResponseEntity.created(location).build<String>()
