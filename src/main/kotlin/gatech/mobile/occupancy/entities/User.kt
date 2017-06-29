@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document(collection = "users")
-data class User(val username: String)
+data class User(val username: String, val name: String, val favorites: List<Favorite> = emptyList())
 {
     @Id @JsonIgnore lateinit var id: String
 }
