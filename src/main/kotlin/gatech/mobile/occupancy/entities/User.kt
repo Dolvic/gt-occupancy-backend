@@ -1,9 +1,11 @@
 package gatech.mobile.occupancy.entities
 
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import com.fasterxml.jackson.annotation.JsonIgnore
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
 
-@Entity
-@Table(name = "users")
-data class User(@Id val userId: Long, val username: String)
+@Document(collection = "users")
+data class User(val username: String)
+{
+    @Id @JsonIgnore lateinit var id: String
+}
