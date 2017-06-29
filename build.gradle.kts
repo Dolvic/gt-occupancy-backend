@@ -1,6 +1,7 @@
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.1.3"
     id("org.jetbrains.kotlin.plugin.spring") version "1.1.3"
+    id("org.jetbrains.kotlin.plugin.jpa") version "1.1.3"
     id("org.springframework.boot") version "1.5.4.RELEASE"
 }
 
@@ -18,6 +19,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-data-rest")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("javax.inject:javax.inject:1")
 
     compile("org.postgresql:postgresql:42.1.1")
     compile("org.liquibase:liquibase-core:3.5.3")
