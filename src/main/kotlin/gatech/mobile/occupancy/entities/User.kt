@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.index.Indexed
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document(collection = "users")
-data class User(@Indexed(unique = true) val username: String, val name: String, val favorites: List<Favorite> = emptyList())
+data class User(@Indexed(unique = true) val username: String, val name: String, val favorites: MutableList<Favorite> = mutableListOf())
 {
     @Id @JsonIgnore lateinit var id: String
 }

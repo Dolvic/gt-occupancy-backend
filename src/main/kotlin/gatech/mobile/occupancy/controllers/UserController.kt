@@ -1,9 +1,11 @@
 package gatech.mobile.occupancy.controllers
 
+import gatech.mobile.occupancy.entities.Favorite
 import gatech.mobile.occupancy.entities.User
 import gatech.mobile.occupancy.repositories.UserRepository
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -31,7 +33,25 @@ class UserController(val userRepository: UserRepository)
     @GetMapping("/{username}/favorites")
     fun fetchUserFavorites(@PathVariable username: String): Any
     {
-        val favorites = userRepository.findByUsername(username)?.favorites ?: ResponseEntity.notFound().build<User>()
-        return mapOf("favorites" to favorites)
+        val favorites = userRepository.findByUsername(username)?.favorites
+        return if (favorites != null) mapOf("favorites" to favorites) else ResponseEntity.notFound().build<User>()
+    }
+
+    @PostMapping("/{username}/favorites", consumes = arrayOf(MediaType.APPLICATION_JSON_VALUE))
+    fun addUserFavorite(@PathVariable username: String, @RequestBody favorite: Favorite): Any
+    {
+        val user = userRepository.findByUsername(username) ?: return ResponseEntity.notFound().build<User>()
+        user.favorites.add(favorite)
+        userRepository.save(user)
+        return mapOf("result" to "Favorite added")
+    }
+
+    @DeleteMapping("/{username}/favorites", consumes = arrayOf(MediaType.APPLICATION_JSON_VALUE))
+    fun deleteUserFavorite(@PathVariable username: String, @RequestBody favorite: Favorite): Any
+    {
+        val user = userRepository.findByUsername(username) ?: return ResponseEntity.notFound().build<User>()
+        user.favorites.remove(favorite)
+        userRepository.save(user)
+        return mapOf("result" to "Favorite deleted")
     }
 }
