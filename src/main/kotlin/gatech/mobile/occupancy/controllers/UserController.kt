@@ -27,4 +27,11 @@ class UserController(val userRepository: UserRepository)
         val location = uriBuilder.pathSegment("users", user.username).build().toUri()
         return ResponseEntity.created(location).build<String>()
     }
+
+    @GetMapping("/{username}/favorites")
+    fun fetchUserFavorites(@PathVariable username: String): Any
+    {
+        val favorites = userRepository.findByUsername(username)?.favorites ?: ResponseEntity.notFound().build<User>()
+        return mapOf("favorites" to favorites)
+    }
 }
