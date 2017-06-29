@@ -19,7 +19,7 @@ class RoomController(val roomRepository: RoomRepository)
     @GetMapping("/rooms/{room}")
     fun fetchFloor(@PathVariable building: String, @PathVariable floor: Int, @PathVariable room: String): Any
     {
-        val room = roomRepository.findByBuildingAndFloorAndRoom(building, floor, room)
-        return room ?: ResponseEntity.notFound().build<Room>()
+        val roomFromDb = roomRepository.findByBuildingAndFloorAndRoom(building, floor, room)
+        return roomFromDb ?: ResponseEntity.notFound().build<Room>()
     }
 }
