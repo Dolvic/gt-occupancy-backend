@@ -23,11 +23,11 @@ class UserController(val userRepository: UserRepository)
             userRepository.findByUsername(username) ?: ResponseEntity.notFound().build<User>()
 
     @PostMapping(consumes = arrayOf(MediaType.APPLICATION_JSON_VALUE))
-    fun registerUser(@RequestBody user: User, uriBuilder: UriComponentsBuilder): ResponseEntity<String>
+    fun registerUser(@RequestBody user: User, uriBuilder: UriComponentsBuilder): ResponseEntity<Map<String, String>>
     {
         userRepository.save(user)
         val location = uriBuilder.pathSegment("users", user.username).build().toUri()
-        return ResponseEntity.created(location).build<String>()
+        return ResponseEntity.created(location).body(mapOf("result" to "User created successfully"))
     }
 
     @GetMapping("/{username}/favorites")
