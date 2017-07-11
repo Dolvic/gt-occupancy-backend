@@ -16,6 +16,7 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-stdlib")
     compile("org.jetbrains.kotlin:kotlin-reflect")
     compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.8.7")
+    compile("io.github.microutils:kotlin-logging:1.4.5")
 
     compile("org.springframework.boot:spring-boot-starter")
     compile("org.springframework.boot:spring-boot-starter-web")
