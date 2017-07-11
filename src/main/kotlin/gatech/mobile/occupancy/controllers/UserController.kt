@@ -16,7 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder
 
 @RequestMapping("/users")
 @RestController
-class UserController(val userRepository: UserRepository)
+class UserController(private val userRepository: UserRepository)
 {
     @GetMapping("/{username}")
     fun fetchUser(@PathVariable username: String): Any =

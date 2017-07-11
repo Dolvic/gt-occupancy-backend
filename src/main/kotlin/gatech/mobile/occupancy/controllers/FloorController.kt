@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/buildings/{building}/floors")
-class FloorController(val floorRepository: FloorRepository)
+class FloorController(private val floorRepository: FloorRepository)
 {
     @GetMapping
     fun fetchFloors(@PathVariable building: String): Map<String, List<Floor>> =

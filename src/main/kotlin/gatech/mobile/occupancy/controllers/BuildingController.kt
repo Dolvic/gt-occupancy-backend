@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/buildings")
-class BuildingController(val buildingRepository: BuildingRepository)
+class BuildingController(private val buildingRepository: BuildingRepository)
 {
     @GetMapping
     fun fetchBuildings(@RequestParam(required = false) name: String?): Map<String, List<Building>>
