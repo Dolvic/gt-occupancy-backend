@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
+import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper
 import org.springframework.web.servlet.config.annotation.CorsRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
@@ -24,6 +25,9 @@ class Application
             registry.addMapping("/**")
         }
     }
+
+    @Bean
+    fun mongoTypeMapper() = DefaultMongoTypeMapper(null)
 
     companion object
     {
