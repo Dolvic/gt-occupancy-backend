@@ -6,3 +6,7 @@ server:
   port: ${PORT}
 endpoints:
   sensitive: false
+
+occupancy:
+  rnoc:
+    places-api: https://m.gatech.edu/api/gtplaces
