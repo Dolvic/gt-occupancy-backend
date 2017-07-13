@@ -10,3 +10,4 @@ endpoints:
 occupancy:
   rnoc:
     places-api: https://m.gatech.edu/api/gtplaces
+    wifi-api: http://wifi.dssg.rnoc.gatech.edu:8080/api/count

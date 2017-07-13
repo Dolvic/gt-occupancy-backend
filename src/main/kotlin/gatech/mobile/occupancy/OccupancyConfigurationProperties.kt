@@ -12,5 +12,6 @@ class OccupancyConfigurationProperties
     class Rnoc
     {
         lateinit var placesApi: String
+        lateinit var wifiApi: String
     }
 }
