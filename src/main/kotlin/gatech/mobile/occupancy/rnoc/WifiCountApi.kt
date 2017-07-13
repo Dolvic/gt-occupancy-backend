@@ -6,6 +6,7 @@ import gatech.mobile.occupancy.OccupancyConfigurationProperties
 import mu.KLogging
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.stereotype.Component
+import org.springframework.web.client.ResourceAccessException
 import org.springframework.web.client.RestTemplate
 import java.net.ConnectException
 
@@ -25,7 +26,7 @@ class WifiCountApi(clientBuilder: RestTemplateBuilder,
         {
             return client.getForObject("$path/?details=$withDetails", WifiCount::class.java)
         }
-        catch(ignored: ConnectException)
+        catch(ignored: ResourceAccessException)
         {
             logger.warn { "Couldn't connect to WiFi API" }
         }

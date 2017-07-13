@@ -23,4 +23,6 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile("javax.inject:javax.inject:1")
+
+    compile("org.apache.httpcomponents:httpclient:4.5.3")
 }
