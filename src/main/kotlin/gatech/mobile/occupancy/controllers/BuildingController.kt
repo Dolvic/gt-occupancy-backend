@@ -36,7 +36,7 @@ class BuildingController(
         entity = if (building != null)
         {
             val count = wifiApi.fetchBuilding(building.buildingId).clientCount
-            val floors = floorRepo.findByBuilding(building.code).map { it.floor }
+            val floors = floorRepo.findByBuildingCode(building.code).map { it.floor }
             ResponseEntity.ok(building.toOccupiedBuilding(count, floors))
         }
         else

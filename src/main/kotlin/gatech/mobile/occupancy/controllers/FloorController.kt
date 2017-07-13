@@ -20,17 +20,17 @@ class FloorController(
 {
     @GetMapping
     fun fetchFloors(@PathVariable building: String): Map<String, List<OccupiedFloor>> =
-            mapOf("results" to floorRepo.findByBuilding(building).map { it.toOccupiedFloor() })
+            mapOf("results" to floorRepo.findByBuildingCode(building).map { it.toOccupiedFloor() })
 
     @GetMapping("/{floor}")
     fun fetchFloor(@PathVariable building: String, @PathVariable floor: String): ResponseEntity<OccupiedFloor>
     {
-        val floorEntity = floorRepo.findByBuildingAndFloor(building, floor)
+        val floorEntity = floorRepo.findByBuildingCodeAndFloor(building, floor)
         val entity: ResponseEntity<OccupiedFloor>
         entity = if (floorEntity != null)
         {
             val count = wifiApi.fetchFloor(floorEntity.buildingId, floor).clientCount
-            val rooms = roomRepo.findByBuildingAndFloor(building, floor).map { it.room }
+            val rooms = roomRepo.findByBuildingCodeAndFloor(building, floor).map { it.room }
             ResponseEntity.ok(floorEntity.toOccupiedFloor(count, rooms))
         }
         else
@@ -41,5 +41,5 @@ class FloorController(
     }
 
     private fun Floor.toOccupiedFloor(count: Int? = null, rooms: List<String> = emptyList())
-            = OccupiedFloor(building, floor, count, rooms)
+            = OccupiedFloor(buildingCode, floor, count, rooms)
 }

@@ -14,12 +14,12 @@ class RoomController(private val roomRepository: RoomRepository)
 {
     @GetMapping("/rooms")
     fun fetchRooms(@PathVariable building: String, @PathVariable floor: String): Map<String, List<Room>> =
-            mapOf("results" to roomRepository.findByBuildingAndFloor(building, floor))
+            mapOf("results" to roomRepository.findByBuildingCodeAndFloor(building, floor))
 
     @GetMapping("/rooms/{room}")
     fun fetchFloor(@PathVariable building: String, @PathVariable floor: String, @PathVariable room: String): Any
     {
-        val roomFromDb = roomRepository.findByBuildingAndFloorAndRoom(building, floor, room)
+        val roomFromDb = roomRepository.findByBuildingCodeAndFloorAndRoom(building, floor, room)
         return roomFromDb ?: ResponseEntity.notFound().build<Room>()
     }
 }

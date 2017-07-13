@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository
 
 interface RoomRepository : MongoRepository<Room, String>
 {
-    fun findByBuildingAndFloor(building: String, floor: String): List<Room>
+    fun findByBuildingCodeAndFloor(building: String, floor: String): List<Room>
 
-    fun findByBuildingAndFloorAndRoom(building: String, floor: String, room: String): Room?
+    fun findByBuildingCodeAndFloorAndRoom(building: String, floor: String, room: String): Room?
 }

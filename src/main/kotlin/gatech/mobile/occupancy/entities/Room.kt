@@ -6,7 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Document
 
 @Document(collection = "rooms")
 data class Room(
-        val building: String,
+        val buildingCode: String,
+        val buildingId: String,
         val floor: String,
         val room: String
 )
