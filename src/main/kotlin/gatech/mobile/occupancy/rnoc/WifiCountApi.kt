@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
 
 @Component
-class WifiCountApi(clientBuilder: RestTemplateBuilder,
-                   appProps: OccupancyConfigurationProperties)
+class WifiCountApi(clientBuilder: RestTemplateBuilder, appProps: OccupancyConfigurationProperties
+)
 {
     private val client: RestTemplate = clientBuilder.rootUri(appProps.rnoc.wifiApi)
             .build()

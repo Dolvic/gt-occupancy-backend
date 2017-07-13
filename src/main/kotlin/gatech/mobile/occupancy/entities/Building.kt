@@ -9,7 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Document
 data class Building(
         @Indexed(unique = true) val code: String,
         @Indexed(unique = true) val buildingId: String,
-        val name: String)
+        val name: String
+)
 {
     @Id @JsonIgnore lateinit var id: String
 }

@@ -8,7 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document(collection = "missing_buildings")
 data class MissingBuilding(
         @Indexed(unique = true) val buildingId: String,
-        val name: String)
+        val name: String
+)
 {
     @Id @JsonIgnore lateinit var id: String
 }
