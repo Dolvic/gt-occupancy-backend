@@ -12,6 +12,10 @@ class WifiCountApi(clientBuilder: RestTemplateBuilder, appProps: OccupancyConfig
     private val client: RestTemplate = clientBuilder.rootUri(appProps.rnoc.wifiApi)
             .build()
 
-    fun fetchAll(withDetails: Boolean = true): WifiCount
-            = client.getForObject("/?details=$withDetails", WifiCount::class.java)
+    private fun fetchForPath(path: String, withDetails: Boolean = false): WifiCount
+            = client.getForObject("$path/?details=$withDetails", WifiCount::class.java)
+
+    fun fetchAll(withDetails: Boolean = false) = fetchForPath("/", withDetails)
+
+    fun fetchBuilding(id: String, withDetails: Boolean = false) = fetchForPath("/building_id=$id", withDetails)
 }
