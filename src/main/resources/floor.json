@@ -1,0 +1,302 @@
+{
+  "clientcount": 227,
+  "AccessPoints": [
+    {
+      "location": "CCB_107A",
+      "name": "050-107A",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "107A",
+      "clientcount": 13,
+      "clientcount_2_4ghz": 1,
+      "clientcount_5ghz": 12
+    },
+    {
+      "location": "CCB_050-129",
+      "name": "050-129",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "129",
+      "clientcount": 9,
+      "clientcount_2_4ghz": 5,
+      "clientcount_5ghz": 4
+    },
+    {
+      "location": "CCB_050-108",
+      "name": "050-108",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "108",
+      "clientcount": 12,
+      "clientcount_2_4ghz": 3,
+      "clientcount_5ghz": 9
+    },
+    {
+      "location": "CCB_050-115",
+      "name": "050-115",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "115",
+      "clientcount": 13,
+      "clientcount_2_4ghz": 3,
+      "clientcount_5ghz": 10
+    },
+    {
+      "location": "CCB_101-2",
+      "name": "050-101-2",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "101-2",
+      "clientcount": 4,
+      "clientcount_2_4ghz": 0,
+      "clientcount_5ghz": 4
+    },
+    {
+      "location": "CCB_050-103",
+      "name": "050-103",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "103",
+      "clientcount": 2,
+      "clientcount_2_4ghz": 1,
+      "clientcount_5ghz": 1
+    },
+    {
+      "location": "CCB_103",
+      "name": "050-103-2",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "103-2",
+      "clientcount": 6,
+      "clientcount_2_4ghz": 1,
+      "clientcount_5ghz": 5
+    },
+    {
+      "location": "CCB_050-154A",
+      "name": "050-154A",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "154A",
+      "clientcount": 1,
+      "clientcount_2_4ghz": 1,
+      "clientcount_5ghz": 0
+    },
+    {
+      "location": "RM_050-17-3",
+      "name": "050-17-3",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "17-3",
+      "clientcount": 12,
+      "clientcount_2_4ghz": 0,
+      "clientcount_5ghz": 12
+    },
+    {
+      "location": "CCB_050-141",
+      "name": "050-141",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "141",
+      "clientcount": 9,
+      "clientcount_2_4ghz": 5,
+      "clientcount_5ghz": 4
+    },
+    {
+      "location": "CCB_050-101",
+      "name": "050-101-1",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "101-1",
+      "clientcount": 24,
+      "clientcount_2_4ghz": 7,
+      "clientcount_5ghz": 17
+    },
+    {
+      "location": "RM_050-17-2",
+      "name": "050-17-2",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "17-2",
+      "clientcount": 6,
+      "clientcount_2_4ghz": 2,
+      "clientcount_5ghz": 4
+    },
+    {
+      "location": "CCB_050-134",
+      "name": "050-134",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "134",
+      "clientcount": 1,
+      "clientcount_2_4ghz": 0,
+      "clientcount_5ghz": 1
+    },
+    {
+      "location": "RM_050-17-1",
+      "name": "050-17-1",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "17-1",
+      "clientcount": 8,
+      "clientcount_2_4ghz": 3,
+      "clientcount_5ghz": 5
+    },
+    {
+      "location": "RM_050-17-4",
+      "name": "050-17-4",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "17-4",
+      "clientcount": 4,
+      "clientcount_2_4ghz": 0,
+      "clientcount_5ghz": 4
+    },
+    {
+      "location": "CCB_050-104A",
+      "name": "050-104A",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "104A",
+      "clientcount": 4,
+      "clientcount_2_4ghz": 2,
+      "clientcount_5ghz": 2
+    },
+    {
+      "location": "RM_050-16-2",
+      "name": "050-16-2",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "16-2",
+      "clientcount": 10,
+      "clientcount_2_4ghz": 2,
+      "clientcount_5ghz": 8
+    },
+    {
+      "location": "RM_050-16-3",
+      "name": "050-16-3",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "16-3",
+      "clientcount": 14,
+      "clientcount_2_4ghz": 0,
+      "clientcount_5ghz": 14
+    },
+    {
+      "location": "RM_050-16-7",
+      "name": "050-16-7",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "16-7",
+      "clientcount": 6,
+      "clientcount_2_4ghz": 3,
+      "clientcount_5ghz": 3
+    },
+    {
+      "location": "CCB_050-156",
+      "name": "050-156",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "156",
+      "clientcount": 0,
+      "clientcount_2_4ghz": 0,
+      "clientcount_5ghz": 0
+    },
+    {
+      "location": "RM_050-16-1",
+      "name": "050-16-1",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "16-1",
+      "clientcount": 9,
+      "clientcount_2_4ghz": 0,
+      "clientcount_5ghz": 9
+    },
+    {
+      "location": "RM_050-16-5",
+      "name": "050-16-5",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "16-5",
+      "clientcount": 22,
+      "clientcount_2_4ghz": 0,
+      "clientcount_5ghz": 22
+    },
+    {
+      "location": "RM_050-16-6",
+      "name": "050-16-6",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "16-6",
+      "clientcount": 5,
+      "clientcount_2_4ghz": 0,
+      "clientcount_5ghz": 5
+    },
+    {
+      "location": "RM_050-16-8",
+      "name": "050-16-8",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "16-8",
+      "clientcount": 8,
+      "clientcount_2_4ghz": 0,
+      "clientcount_5ghz": 8
+    },
+    {
+      "location": "CCB 16",
+      "name": "050-16-4",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "16-4",
+      "clientcount": 1,
+      "clientcount_2_4ghz": 1,
+      "clientcount_5ghz": 0
+    },
+    {
+      "location": "CCB_050-102",
+      "name": "050-102-1",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "102-1",
+      "clientcount": 2,
+      "clientcount_2_4ghz": 2,
+      "clientcount_5ghz": 0
+    },
+    {
+      "location": "CCB_102-2",
+      "name": "050-102-2",
+      "building_id": "050",
+      "building_name": "College of Computing",
+      "floor": "1",
+      "room": "102-2",
+      "clientcount": 22,
+      "clientcount_2_4ghz": 1,
+      "clientcount_5ghz": 21
+    }
+  ]
+}
