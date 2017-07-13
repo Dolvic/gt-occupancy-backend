@@ -33,9 +33,9 @@ class WifiCountApi(clientBuilder: RestTemplateBuilder,
 
         val resourceFile = when
         {
-            "floor" in path -> "floor.json"
-            "building" in path -> "building.json"
-            else -> "all.json"
+            "floor" in path -> "/floor.json"
+            "building" in path -> "/building.json"
+            else -> "/all.json"
         }
         val resource = javaClass.getResourceAsStream(resourceFile)
         return objectMapper.readValue<WifiCount>(resource)
