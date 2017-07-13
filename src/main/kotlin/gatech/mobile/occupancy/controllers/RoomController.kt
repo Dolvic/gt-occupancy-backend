@@ -2,6 +2,7 @@ package gatech.mobile.occupancy.controllers
 
 import gatech.mobile.occupancy.entities.Room
 import gatech.mobile.occupancy.repositories.RoomRepository
+import org.springframework.data.domain.Sort
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -14,7 +15,7 @@ class RoomController(private val roomRepository: RoomRepository)
 {
     @GetMapping("/rooms")
     fun fetchRooms(@PathVariable building: String, @PathVariable floor: String): Map<String, List<Room>> =
-            mapOf("results" to roomRepository.findByBuildingCodeAndFloor(building, floor))
+            mapOf("results" to roomRepository.findByBuildingCodeAndFloor(building, floor, Sort("room")))
 
     @GetMapping("/rooms/{room}")
     fun fetchFloor(@PathVariable building: String, @PathVariable floor: String, @PathVariable room: String): Any

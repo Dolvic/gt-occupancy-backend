@@ -4,6 +4,7 @@ import gatech.mobile.occupancy.entities.Floor
 import gatech.mobile.occupancy.repositories.FloorRepository
 import gatech.mobile.occupancy.repositories.RoomRepository
 import gatech.mobile.occupancy.rnoc.WifiCountApi
+import org.springframework.data.domain.Sort
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -20,7 +21,7 @@ class FloorController(
 {
     @GetMapping
     fun fetchFloors(@PathVariable building: String): Map<String, List<OccupiedFloor>> =
-            mapOf("results" to floorRepo.findByBuildingCode(building).map { it.toOccupiedFloor() })
+            mapOf("results" to floorRepo.findByBuildingCode(building, Sort("floor")).map { it.toOccupiedFloor() })
 
     @GetMapping("/{floor}")
     fun fetchFloor(@PathVariable building: String, @PathVariable floor: String): ResponseEntity<OccupiedFloor>
@@ -30,7 +31,7 @@ class FloorController(
         entity = if (floorEntity != null)
         {
             val count = wifiApi.fetchFloor(floorEntity.buildingId, floor).clientCount
-            val rooms = roomRepo.findByBuildingCodeAndFloor(building, floor).map { it.room }
+            val rooms = roomRepo.findByBuildingCodeAndFloor(building, floor, Sort("room")).map { it.room }
             ResponseEntity.ok(floorEntity.toOccupiedFloor(count, rooms))
         }
         else
