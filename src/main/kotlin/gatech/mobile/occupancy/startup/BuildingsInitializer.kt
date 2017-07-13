@@ -15,7 +15,8 @@ class BuildingsInitializer(
         private val buildingRepo: BuildingRepository,
         private val wifiApi: WifiCountApi,
         private val codeRepo: BuildingCodeRepository,
-        private val missingRepo: MissingBuildingRepository
+        private val missingRepo: MissingBuildingRepository,
+        private val floorInitializer: FloorInitializer
 )
 {
     companion object : KLogging()
@@ -48,5 +49,9 @@ class BuildingsInitializer(
         missingRepo.save(newMissingBuildings)
 
         logger.info { "New buildings initialization complete." }
+
+        val newBuildingIds = newMongoBuildings.map { it.buildingId }
+        val accessPointsForNewBuildings = accessPoints.filter { it.buildingId in newBuildingIds }
+        floorInitializer.addMissingFloors(accessPointsForNewBuildings, codes)
     }
 }
