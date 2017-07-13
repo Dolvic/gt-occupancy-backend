@@ -18,4 +18,7 @@ class WifiCountApi(clientBuilder: RestTemplateBuilder, appProps: OccupancyConfig
     fun fetchAll(withDetails: Boolean = false) = fetchForPath("/", withDetails)
 
     fun fetchBuilding(id: String, withDetails: Boolean = false) = fetchForPath("/building_id=$id", withDetails)
+
+    fun fetchFloor(buildingId: String, floor: String, withDetails: Boolean = false)
+            = fetchForPath("/building_id=$buildingId/floor=$floor", withDetails)
 }
