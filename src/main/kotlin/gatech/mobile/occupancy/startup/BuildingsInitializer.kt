@@ -23,7 +23,7 @@ class BuildingsInitializer(
     @Async
     fun addMissingBuildings()
     {
-        val (_, accessPoints) = wifiApi.fetchAll()
+        val (_, accessPoints) = wifiApi.fetchAll(true)
         val wifiBuildings = accessPoints.distinctBy { it.buildingId }
 
         val mongoBuildings = buildingRepo.findAll()
