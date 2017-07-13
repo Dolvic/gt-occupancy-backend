@@ -17,6 +17,6 @@ class FloorController(private val floorRepository: FloorRepository)
             mapOf("results" to floorRepository.findByBuilding(building))
 
     @GetMapping("/{floor}")
-    fun fetchFloor(@PathVariable building: String, @PathVariable floor: Int): Any =
+    fun fetchFloor(@PathVariable building: String, @PathVariable floor: String): Any =
             floorRepository.findByBuildingAndFloor(building, floor) ?: ResponseEntity.notFound().build<Floor>()
 }

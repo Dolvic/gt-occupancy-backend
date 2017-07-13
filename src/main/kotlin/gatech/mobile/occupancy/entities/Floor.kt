@@ -7,8 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document(collection = "floors")
 data class Floor(
         val building: String,
-        val floor: Int,
-        val name: String
+        val floor: String
 )
 {
     @Id @JsonIgnore lateinit var id: String

@@ -7,5 +7,5 @@ interface FloorRepository : MongoRepository<Floor, String>
 {
     fun findByBuilding(building: String): List<Floor>
 
-    fun findByBuildingAndFloor(building: String, floor: Int): Floor?
+    fun findByBuildingAndFloor(building: String, floor: String): Floor?
 }

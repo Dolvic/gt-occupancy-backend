@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController
 class RoomController(private val roomRepository: RoomRepository)
 {
     @GetMapping("/rooms")
-    fun fetchRooms(@PathVariable building: String, @PathVariable floor: Int): Map<String, List<Room>> =
+    fun fetchRooms(@PathVariable building: String, @PathVariable floor: String): Map<String, List<Room>> =
             mapOf("results" to roomRepository.findByBuildingAndFloor(building, floor))
 
     @GetMapping("/rooms/{room}")
-    fun fetchFloor(@PathVariable building: String, @PathVariable floor: Int, @PathVariable room: String): Any
+    fun fetchFloor(@PathVariable building: String, @PathVariable floor: String, @PathVariable room: String): Any
     {
         val roomFromDb = roomRepository.findByBuildingAndFloorAndRoom(building, floor, room)
         return roomFromDb ?: ResponseEntity.notFound().build<Room>()
