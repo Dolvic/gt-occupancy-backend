@@ -23,6 +23,7 @@ class Application
         {
             super.addCorsMappings(registry)
             registry.addMapping("/**")
+                    .allowedMethods("*")
         }
     }
 
