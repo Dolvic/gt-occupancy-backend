@@ -1,11 +1,13 @@
 package gatech.mobile.occupancy.rnoc
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 data class PlacesBuilding(
-        val b_id: String,
+        @JsonProperty("b_id") val buildingId: String,
         val name: String,
         val address: String,
-        val image_url: String,
+        @JsonProperty("image_url") val imageUrl: String,
         val longitude: Double,
         val latitude: Double,
-        val phone_num: String
+        @JsonProperty("phone_num") val phoneNum: String
 )

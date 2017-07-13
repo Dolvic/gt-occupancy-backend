@@ -24,7 +24,7 @@ class BuildingsInitializer(
     fun addMissingBuildings()
     {
         val (_, accessPoints) = wifiApi.fetchAll()
-        val wifiBuildings = accessPoints.distinctBy { it.building_id }
+        val wifiBuildings = accessPoints.distinctBy { it.buildingId }
 
         val mongoBuildings = buildingRepo.findAll()
         val mongoBuildingIds = mongoBuildings.map { it.buildingId }
@@ -36,17 +36,17 @@ class BuildingsInitializer(
         val missingBuildings = missingRepo.findAll()
         val missingIds = missingBuildings.map { it.buildingId }
 
-        val newBuildings = wifiBuildings.filterNot { mongoBuildingIds.contains(it.building_id) }
-                .partition { codedIds.contains(it.building_id) }
+        val newBuildings = wifiBuildings.filterNot { mongoBuildingIds.contains(it.buildingId) }
+                .partition { codedIds.contains(it.buildingId) }
         val coded = newBuildings.first
         val uncoded = newBuildings.second.toMutableList()
-        uncoded.removeIf { missingIds.contains(it.building_id) }
+        uncoded.removeIf { missingIds.contains(it.buildingId) }
 
         logger.info { "Found new buildings: ${coded.size} known, ${uncoded.size} unknown" }
 
-        val newMongoBuildings = coded.map { Building(codes.getValue(it.building_id), it.building_id, it.building_name) }
+        val newMongoBuildings = coded.map { Building(codes.getValue(it.buildingId), it.buildingId, it.buildingName) }
         buildingRepo.save(newMongoBuildings)
-        val newMissingBuildings = uncoded.map { MissingBuilding(it.building_id, it.building_name) }
+        val newMissingBuildings = uncoded.map { MissingBuilding(it.buildingId, it.buildingName) }
         missingRepo.save(newMissingBuildings)
         logger.debug { "New buildings saved." }
     }

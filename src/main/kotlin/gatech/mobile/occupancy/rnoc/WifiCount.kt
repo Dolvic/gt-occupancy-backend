@@ -1,7 +1,9 @@
 package gatech.mobile.occupancy.rnoc
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 data class WifiCount(
-        val clientcount: Int,
-        val AccessPoints: List<WifiAccessPoint> = emptyList()
+        @JsonProperty("clientcount") val clientCount: Int,
+        @JsonProperty("AccessPoints") val accessPoints: List<WifiAccessPoint> = emptyList()
 )
 
