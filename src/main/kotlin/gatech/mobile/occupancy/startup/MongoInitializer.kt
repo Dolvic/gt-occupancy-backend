@@ -11,8 +11,10 @@ import javax.annotation.Priority
 
 @Priority(Ordered.HIGHEST_PRECEDENCE)
 @Component
-class MongoInitializer(private val converter: MappingMongoConverter, private val typeMapper: MongoTypeMapper)
-    : ApplicationRunner
+class MongoInitializer(
+        private val converter: MappingMongoConverter,
+        private val typeMapper: MongoTypeMapper
+) : ApplicationRunner
 {
     companion object : KLogging()
 

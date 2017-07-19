@@ -8,14 +8,15 @@ import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.stereotype.Component
 import org.springframework.web.client.ResourceAccessException
 import org.springframework.web.client.RestTemplate
-import java.net.ConnectException
 
 @Component
-class WifiCountApi(clientBuilder: RestTemplateBuilder,
-                   appProps: OccupancyConfigurationProperties,
-                   private val objectMapper: ObjectMapper)
+class WifiCountApi(
+        clientBuilder: RestTemplateBuilder,
+        appProps: OccupancyConfigurationProperties,
+        private val objectMapper: ObjectMapper
+)
 {
-    companion object: KLogging()
+    companion object : KLogging()
 
     private val client: RestTemplate = clientBuilder.rootUri(appProps.rnoc.wifiApi)
             .build()

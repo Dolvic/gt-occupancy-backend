@@ -10,10 +10,13 @@ import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
 
 @Component
-class PlacesApi(clientBuilder: RestTemplateBuilder, appProps: OccupancyConfigurationProperties)
+class PlacesApi(
+        clientBuilder: RestTemplateBuilder,
+        appProps: OccupancyConfigurationProperties
+)
 {
     private val fixContentTypeInterceptor = ClientHttpRequestInterceptor { request, body, execution ->
-        val response = execution!!.execute(request, body)
+        val response = execution.execute(request, body)
         response.headers.contentType = MediaType.APPLICATION_JSON
         response
     }
