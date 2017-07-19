@@ -48,4 +48,11 @@ class WifiCountApi(
 
     fun fetchFloor(buildingId: String, floor: String, withDetails: Boolean = false)
             = fetchForPath("/building_id=$buildingId/floor=$floor", withDetails)
+
+    fun fetchRoom(buildingId: String, floor: String, room: String, withDetails: Boolean = false): WifiCount
+    {
+        val floorInfo = fetchFloor(buildingId, floor, true)
+        val roomAP = floorInfo.accessPoints.first { it.room == room }
+        return if (withDetails) WifiCount(roomAP.clientCount, listOf(roomAP)) else WifiCount(roomAP.clientCount)
+    }
 }
