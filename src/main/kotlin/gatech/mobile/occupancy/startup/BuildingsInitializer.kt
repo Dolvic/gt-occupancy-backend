@@ -31,7 +31,6 @@ class BuildingsInitializer(
     fun addMissingBuildings()
     {
         val (_, accessPoints) = wifiApi.fetchAll(true)
-        val wifiBuildings = accessPoints.distinctBy { it.buildingId }
 
         val mongoBuildingIds = buildingRepo.findAll().map { it.buildingId }
 
@@ -40,44 +39,36 @@ class BuildingsInitializer(
 
         val missingIds = missingRepo.findAll().map { it.buildingId }
 
-        val newBuildings = wifiBuildings.filter { it.buildingId !in mongoBuildingIds }
+        val (coded, uncoded) = accessPoints.filter { it.buildingId !in mongoBuildingIds }
                 .partition { it.buildingId in codedIds }
-        val coded = newBuildings.first
-        val uncoded = newBuildings.second.toMutableList()
-        uncoded.removeIf { it.buildingId in missingIds }
 
-        logger.info { "New buildings: ${coded.size} known, ${uncoded.size} unknown" }
+        val newAPs = coded.distinctBy { it.buildingId }
+        val newMissingAPs = uncoded.distinctBy { it.buildingId }.filter { it.buildingId !in missingIds }
+        logger.info { "New buildings: ${newAPs.size} known, ${newMissingAPs.size} unknown" }
 
-        val newMongoBuildings = coded.map {
-            Building(codes.getValue(it.buildingId), it.buildingId, it.buildingName.trim())
-        }
+        val newMongoBuildings = newAPs.map { (id, name) -> Building(codes.getValue(id), id, name) }
         buildingRepo.save(newMongoBuildings)
 
-        val newMissingBuildings = uncoded.map { MissingBuilding(it.buildingId, it.buildingName) }
+        val newMissingBuildings = newMissingAPs.map { MissingBuilding(it.buildingId, it.buildingName) }
         missingRepo.save(newMissingBuildings)
 
         logger.info { "New buildings initialization complete." }
 
-        val newIds = coded.map { it.buildingId }
-        val newAccessPoints = accessPoints.filter { it.buildingId in newIds }
-        addMissingFloors(newAccessPoints, newMongoBuildings)
-        addMissingRooms(newAccessPoints, codes)
+        addMissingFloors(coded, codes)
+        addMissingRooms(coded, codes)
     }
 
     @Async
-    fun addMissingFloors(accessPoints: List<WifiAccessPoint>, buildings: List<Building>)
+    fun addMissingFloors(accessPoints: List<WifiAccessPoint>, codes: Map<String, String>)
     {
-        val wifiByBuildings = accessPoints.groupBy { it.buildingId }
-        val buildingsMap = buildings.associateBy { it.buildingId }
-
-        val newFloors = wifiByBuildings.mapKeys { buildingsMap.getValue(it.key) }
-                .flatMap { convertToFloors(it.key, it.value) }
+        val apsByBuildings = accessPoints.groupBy { it.buildingId }
+        val newFloors = apsByBuildings.flatMap { it.value.toFloors(codes.getValue(it.key)) }
         floorRepo.save(newFloors)
         logger.info { "New floors initialization complete." }
     }
 
-    private fun convertToFloors(building: Building, accessPoints: List<WifiAccessPoint>)
-            = accessPoints.map { it.floor }.distinct().map { Floor(building.code, building.buildingId, it) }
+    private fun List<WifiAccessPoint>.toFloors(code: String)
+            = distinctBy { it.floor }.map { Floor(code, it.buildingId, it.floor) }
 
     @Async
     fun addMissingRooms(accessPoints: List<WifiAccessPoint>, codes: Map<String, String>)
